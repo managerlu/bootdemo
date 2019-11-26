@@ -1,6 +1,8 @@
 package com.zsl.springboot.bootdemo.model;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
     private int id;
 
     private String username;

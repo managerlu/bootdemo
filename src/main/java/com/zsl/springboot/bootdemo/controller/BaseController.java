@@ -1,9 +1,11 @@
 package com.zsl.springboot.bootdemo.controller;
 
+import com.zsl.springboot.bootdemo.model.UserModel;
 import com.zsl.springboot.bootdemo.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.models.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,13 @@ public class BaseController {
         }else {
             return  "登陆失败";
         }
+    }
+
+    @RequestMapping("/getUserByName")
+    @ApiOperation(value = "用户查询",notes = "用户查询")
+    public Object getUserByName(@ApiParam(name = "username",value = "用户名") String username) {
+        UserModel userModel = userService.getUser(username);
+        return userModel;
     }
 
     @RequestMapping("/register")
